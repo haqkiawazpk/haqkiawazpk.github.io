@@ -1,0 +1,17 @@
+name: Fetch index from project repo
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: curl -L https://raw.githubusercontent.com/haqkiawazpk/haq-ki-awaz/main/haq-ki-awaz.html -o index.html
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Update index.html from haq-ki-awaz project repo - 3 Nov 2026"
+          git push
