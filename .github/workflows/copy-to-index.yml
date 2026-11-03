@@ -1,0 +1,17 @@
+name: Copy haq file to index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cp haq-ki-awaz.html index.html
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html
+          git commit -m "Copy updated haq-ki-awaz.html to index.html" || echo "No changes"
+          git push
