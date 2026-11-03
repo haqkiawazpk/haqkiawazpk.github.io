@@ -1,0 +1,18 @@
+name: Replace index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  replace-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy haq-ki-awaz.html to index.html
+        run: |
+          cp haq-ki-awaz.html index.html
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Replace index.html with haq-ki-awaz.html [skip ci]"
+          git push
