@@ -1,9 +1,9 @@
-name: Copy haq to index
+name: Copy compressed to index
 on:
   workflow_dispatch:
   push:
     paths:
-      - 'haq-ki-awaz.html'
+      - 'haq-ki-awaz-compressed.html'
 jobs:
   copy:
     runs-on: ubuntu-latest
@@ -11,12 +11,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Copy haq file to index
-        run: cp haq-ki-awaz.html index.html
+      - name: Copy compressed file to index
+        run: cp haq-ki-awaz-compressed.html index.html
       - name: Commit index
         run: |
           git config user.name "haqkiawazpk"
           git config user.email "haqkiawazpk@users.noreply.github.com"
           git add index.html
-          git diff --cached --quiet || git commit -m "Update index.html from haq-ki-awaz.html"
+          git diff --cached --quiet || git commit -m "Update index.html from haq-ki-awaz-compressed.html"
           git push
