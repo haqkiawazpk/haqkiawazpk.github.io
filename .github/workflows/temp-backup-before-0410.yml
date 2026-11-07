@@ -1,0 +1,21 @@
+name: Temp backup live index before 0410
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy index to dated backup file
+        run: |
+          cp index.html haq-ki-awaz-before-0410-8nov2026.html
+          ls -lh haq-ki-awaz-before-0410-8nov2026.html index.html
+      - name: Commit backup file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add haq-ki-awaz-before-0410-8nov2026.html
+          git commit -m "Preserve current live index.html before 0410 8 Nov 2026 update" || echo "nothing to commit"
+          git push
