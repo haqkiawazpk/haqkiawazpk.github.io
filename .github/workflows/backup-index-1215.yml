@@ -1,0 +1,17 @@
+name: Backup index before 1215 update
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cp index.html haq-ki-awaz-before-1215-7nov2026.html
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add haq-ki-awaz-before-1215-7nov2026.html
+          git diff --cached --quiet || git commit -m "Preserve current live index.html before 12:15 7 Nov 2026 update"
+          git push
