@@ -1,0 +1,19 @@
+name: Temp backup index before 0015
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve current live index.html before 0015 8 Nov 2026 update
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          cp index.html haq-ki-awaz-before-0015-8nov2026.html
+          git add haq-ki-awaz-before-0015-8nov2026.html
+          git commit -m "Preserve current live index.html before 0015 8 Nov 2026 update"
+          git push
