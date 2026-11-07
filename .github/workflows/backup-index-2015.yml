@@ -1,0 +1,27 @@
+name: Backup live index before 2015 update
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy current index.html to backup name
+        run: |
+          set -euo pipefail
+          test -f index.html
+          cp index.html haq-ki-awaz-before-2015-7nov2026.html
+          ls -l index.html haq-ki-awaz-before-2015-7nov2026.html
+          echo "index.html sha256: $(sha256sum index.html | awk '{print $1}')"
+          echo "backup sha256: $(sha256sum haq-ki-awaz-before-2015-7nov2026.html | awk '{print $1}')"
+          cmp index.html haq-ki-awaz-before-2015-7nov2026.html && echo "BACKUP MATCHES LIVE INDEX"
+      - name: Commit backup file
+        run: |
+          set -euo pipefail
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add haq-ki-awaz-before-2015-7nov2026.html
+          git commit -m "Backup live index before 2015 update"
+          git push
