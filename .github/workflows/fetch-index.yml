@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: curl -L https://raw.githubusercontent.com/haqkiawazpk/haq-ki-awaz/main/haq-ki-awaz.html -o index.html
+      - run: |
+          curl -fL https://raw.githubusercontent.com/haqkiawazpk/haq-ki-awaz/main/haq-ki-awaz.html -o index.html
+          test $(stat -c%s index.html) -gt 1000000 || { echo "download too small, aborting"; exit 1; }
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
