@@ -1,19 +1,20 @@
-name: Temp rename index 2215
+name: Temp backup index 2315
 on:
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  rename:
+  backup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Rename index.html to backup
+      - name: Copy index.html to backup
         run: |
           test -f index.html
-          test ! -e haq-ki-awaz-before-2215-8nov2026.html
+          test ! -e haq-ki-awaz-before-2315-8nov2026.html
           git config user.name "haqkiawazpk"
           git config user.email "haqkiawazpk@users.noreply.github.com"
-          git mv index.html haq-ki-awaz-before-2215-8nov2026.html
-          git commit -m "Rename index.html to haq-ki-awaz-before-2215-8nov2026.html"
+          cp index.html haq-ki-awaz-before-2315-8nov2026.html
+          git add haq-ki-awaz-before-2315-8nov2026.html
+          git commit -m "Backup index.html to haq-ki-awaz-before-2315-8nov2026.html"
           git push
