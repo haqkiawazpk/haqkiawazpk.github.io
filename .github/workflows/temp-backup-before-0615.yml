@@ -1,4 +1,4 @@
-name: Temp backup before 0815
+name: Temp backup before 0915
 on:
   workflow_dispatch:
 permissions:
@@ -10,9 +10,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Copy current index.html to backup file
         run: |
-          cp index.html haq-ki-awaz-before-0815-8nov2026.html
+          cp index.html haq-ki-awaz-before-0915-8nov2026.html
           git config user.name "haqkiawazpk"
           git config user.email "haqkiawazpk@users.noreply.github.com"
-          git add haq-ki-awaz-before-0815-8nov2026.html
-          git commit -m "Backup index.html before 0815 deploy"
+          git add haq-ki-awaz-before-0915-8nov2026.html
+          git commit -m "Backup index.html before 0915 deploy"
           git push
