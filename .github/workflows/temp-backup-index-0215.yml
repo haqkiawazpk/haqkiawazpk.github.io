@@ -1,0 +1,18 @@
+name: Backup index before 0215 10 Nov 2026
+on:
+  workflow_dispatch:
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Backup index.html
+        run: |
+          cp index.html haq-ki-awaz-before-0215-10nov2026.html
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add haq-ki-awaz-before-0215-10nov2026.html
+          git commit -m "Backup index.html before 0215 10 Nov 2026" || echo "Nothing to commit"
+          git push
