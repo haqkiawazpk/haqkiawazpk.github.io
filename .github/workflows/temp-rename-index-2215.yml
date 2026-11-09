@@ -1,4 +1,4 @@
-name: Temp backup index 2315
+name: Temp backup index 1630
 on:
   workflow_dispatch:
 permissions:
@@ -11,10 +11,10 @@ jobs:
       - name: Copy index.html to backup
         run: |
           test -f index.html
-          test ! -e haq-ki-awaz-before-2315-8nov2026.html
+          test ! -e haq-ki-awaz-before-1630-9nov2026.html
           git config user.name "haqkiawazpk"
           git config user.email "haqkiawazpk@users.noreply.github.com"
-          cp index.html haq-ki-awaz-before-2315-8nov2026.html
-          git add haq-ki-awaz-before-2315-8nov2026.html
-          git commit -m "Backup index.html to haq-ki-awaz-before-2315-8nov2026.html"
+          cp index.html haq-ki-awaz-before-1630-9nov2026.html
+          git add haq-ki-awaz-before-1630-9nov2026.html
+          git commit -m "Backup index.html to haq-ki-awaz-before-1630-9nov2026.html"
           git push
