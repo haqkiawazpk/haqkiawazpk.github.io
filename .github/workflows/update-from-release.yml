@@ -9,15 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-2230/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -gt 1000000 || { echo "download too small, aborting"; exit 1; }
-          echo "3a83b4a3159a11c9847b58fad79d24bcba4ec0320ff37e3f56554326a174a394  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'president-house-zardari-naqvi-provinces-nov2026' haq-ki-awaz.html || { echo "missing president-house anchor, aborting"; exit 1; }
-          grep -q 'bessent-blames-commerce-nvidia-scandal-nov2026' haq-ki-awaz.html || { echo "missing bessent anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-2323/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 27968247 || { echo "size mismatch, aborting"; exit 1; }
+          echo "71d202971c7aea5d1b65d85a3d5c48fea380e968d86cf1bb1299e4dcaa952a48  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'kaziranga-bus-truck-crash-assam-nov2026' haq-ki-awaz.html || { echo "missing kaziranga anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-13-2230"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-13-2323"
           git push
