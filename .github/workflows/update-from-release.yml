@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-0322/haq-ki-awaz.html -o haq-ki-awaz.html
-          test $(stat -c%s haq-ki-awaz.html) -gt 1000000 || { echo "download too small, aborting"; exit 1; }
-          echo "8b12ab4858ca86614ac5fcee6614e71aee3061fae77251eb3357bfdc4c388aa7  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'naqvi-imran-legal-rights-no-change-nov2026' haq-ki-awaz.html || { echo "missing naqvi anchor, aborting"; exit 1; }
-          grep -q 'washington-dc-active-shooter-vida-nov2026' haq-ki-awaz.html || { echo "missing washington anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-0415/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -gt 1000000 || { echo "download too small, aborting"; exit 1; }
+          echo "3afa33ba5a7a114b36932073fcf8acab862b269a6bbd0a47cf8a4039ad367965  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'sngpl-ssgc-gas-price-petitions-ogra-nov2026' haq-ki-awaz.html || { echo "missing sngpl anchor, aborting"; exit 1; }
+          grep -q 'brooklyn-collapse-eight-dead-mamdani-probe-nov2026' haq-ki-awaz.html || { echo "missing brooklyn anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-0322 release"
+          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-0415 release"
           git push
