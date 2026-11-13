@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-1320/haq-ki-awaz.html -o haq-ki-awaz.html
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-1415/haq-ki-awaz.html -o haq-ki-awaz.html
           test "$(stat -c%s haq-ki-awaz.html)" -gt 1000000 || { echo "download too small, aborting"; exit 1; }
-          echo "98234e5863e2c5780f03be7d96256621ca6ad9dd9a2aadef5d39ecf952e5bc4d  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'imran-backs-gohar-dialogue-nov2026' haq-ki-awaz.html || { echo "missing imran anchor, aborting"; exit 1; }
-          grep -q 'asean-myanmar-dilemma-nov2026' haq-ki-awaz.html || { echo "missing asean anchor, aborting"; exit 1; }
+          echo "6e39a994238e73562a4a3e2ab42033dccfc288869187e822a154af8288157ea3  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'gohar-unable-meet-qureshi-pic-nov2026' haq-ki-awaz.html || { echo "missing gohar anchor, aborting"; exit 1; }
+          grep -q 'volgograd-drone-strike-four-killed-nov2026' haq-ki-awaz.html || { echo "missing volgograd anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-1320 release"
+          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-1415 release"
           git push
