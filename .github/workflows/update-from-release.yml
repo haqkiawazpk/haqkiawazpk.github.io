@@ -9,14 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-0620/haq-ki-awaz.html -o haq-ki-awaz.html
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-13-0720/haq-ki-awaz.html -o haq-ki-awaz.html
           test "$(stat -c%s haq-ki-awaz.html)" -gt 1000000 || { echo "download too small, aborting"; exit 1; }
-          echo "8c01bf237c5d21fb2edde2b2aed517e929ff7907c743911a04bf39ecb50fe218  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'ghizer-van-yasin-river-tragedy-nov2026' haq-ki-awaz.html || { echo "missing ghizer anchor, aborting"; exit 1; }
-          grep -q 'anthropic-ipo-six-times-oversubscribed-nov2026' haq-ki-awaz.html || { echo "missing anthropic anchor, aborting"; exit 1; }
+          echo "b5c7d5ce29eab54eeb020fb3595517a6e2ad295f6f1eb4e7a0591f0a5de1f777  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'pti-fcc-kp-governor-rule-challenge-nov2026' haq-ki-awaz.html || { echo "missing pti anchor, aborting"; exit 1; }
+          grep -q 'us-record-october-budget-deficit-nov2026' haq-ki-awaz.html || { echo "missing us anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-0620 release"
+          git diff --cached --quiet || git commit -m "Update index.html from site-update-2026-11-13-0720 release"
           git push
