@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1930/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 26896488 || { echo "size mismatch, aborting"; exit 1; }
-          echo "f0d842a26c07a03085c953ce3c30673793183f3069f01ef2790f88ff3e9247ad  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'kp-gold-mining-jit-probe-nov2026' haq-ki-awaz.html || { echo "missing kp-gold-mining-jit-probe-nov2026 anchor, aborting"; exit 1; }
-          grep -q 'gaza-four-killed-deir-balah-khan-younis-nov2026' haq-ki-awaz.html || { echo "missing gaza-four-killed-deir-balah-khan-younis-nov2026 anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-2030/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 27003217 || { echo "size mismatch, aborting"; exit 1; }
+          echo "1f0a033c1da24b90154ecccba739057af0fd55a041fada660a9754216eacc08a  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'pbc-imran-medical-plea-nov2026' haq-ki-awaz.html || { echo "missing pbc-imran-medical-plea-nov2026 anchor, aborting"; exit 1; }
+          grep -q 'sudan-un-drone-deaths-nov2026' haq-ki-awaz.html || { echo "missing sudan-un-drone-deaths-nov2026 anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1930"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-2030"
           git push
