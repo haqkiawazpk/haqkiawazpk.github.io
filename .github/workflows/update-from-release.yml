@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-2130/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 27103731 || { echo "size mismatch, aborting"; exit 1; }
-          echo "844437e6805e63f115b1ff538271b11d65e8efd548d7b09be70492937e24468e  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'tarar-referendum-legal-constitutional-nov2026' haq-ki-awaz.html || { echo "missing tarar-referendum-legal-constitutional-nov2026 anchor, aborting"; exit 1; }
-          grep -q 'iran-linked-assassination-plot-greece-nov2026' haq-ki-awaz.html || { echo "missing iran-linked-assassination-plot-greece-nov2026 anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-2230/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 27237995 || { echo "size mismatch, aborting"; exit 1; }
+          echo "479ff19626dfaacc69678d37d7946bf52cf85ab07dcb11aff1c9f02e2303d687  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'munir-meets-uk-turkish-chiefs-defence-nov2026' haq-ki-awaz.html || { echo "missing munir-meets-uk-turkish-chiefs-defence-nov2026 anchor, aborting"; exit 1; }
+          grep -q 'europe-hoax-bomb-threats-investigation-nov2026' haq-ki-awaz.html || { echo "missing europe-hoax-bomb-threats-investigation-nov2026 anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-2130"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-2230"
           git push
