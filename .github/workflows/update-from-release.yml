@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1630/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 26573893 || { echo "size mismatch, aborting"; exit 1; }
-          echo "dcaf369b73fadfb1d9a27bae6d56ac3a3ae6799bd1061a6734bdd97d68842b8e  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'sanaullah-imran-surgery-offer-nov2026' haq-ki-awaz.html || { echo "missing sanaullah-imran-surgery-offer anchor, aborting"; exit 1; }
-          grep -q 'png-marape-taiwan-closed-nov2026' haq-ki-awaz.html || { echo "missing png-marape-taiwan-closed anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1730/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 26686139 || { echo "size mismatch, aborting"; exit 1; }
+          echo "476e5e35ed7d2cfb5fdc2903d415d8b97ac7cb98d70a55409e4e39a430b4392a  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'bilawal-system-made-to-collapse-nov2026' haq-ki-awaz.html || { echo "missing bilawal-system-made-to-collapse anchor, aborting"; exit 1; }
+          grep -q 'hungary-suspends-ukraine-rail-nov2026' haq-ki-awaz.html || { echo "missing hungary-suspends-ukraine-rail anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1630"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1730"
           git push
