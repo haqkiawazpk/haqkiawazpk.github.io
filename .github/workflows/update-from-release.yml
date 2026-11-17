@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1430/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 26363763 || { echo "size mismatch, aborting"; exit 1; }
-          echo "9006f167d81b624904c20c9955707f1a92fba41bcef00f7146a77d7d890b42dd  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'cdf-munir-araghchi-meeting-nov2026' haq-ki-awaz.html || { echo "missing cdf-munir anchor, aborting"; exit 1; }
-          grep -q 'mongolia-president-resigns-corruption-nov2026' haq-ki-awaz.html || { echo "missing mongolia anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1530/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 26469616 || { echo "size mismatch, aborting"; exit 1; }
+          echo "ca256e4307206937db3c162ec6966b3fa4fda069e6c19f68973dd1d9813ce89a  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'flour-costlier-imports-insufficient-nov2026' haq-ki-awaz.html || { echo "missing flour-costlier anchor, aborting"; exit 1; }
+          grep -q 'eu-expands-russia-sanctions-145-nov2026' haq-ki-awaz.html || { echo "missing eu-expands anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1430"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1530"
           git push
