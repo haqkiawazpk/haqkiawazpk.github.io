@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1330/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 26312422 || { echo "size mismatch, aborting"; exit 1; }
-          echo "43de7fb43f62f6f32f9f6da930e24539498ab242a54b177e57d68b8fbb04a699  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'sc-bail-placenta-trade-case-nov2026' haq-ki-awaz.html || { echo "missing sc-bail anchor, aborting"; exit 1; }
-          grep -q 'optimizely-websites-subverted-crypto-theft-nov2026' haq-ki-awaz.html || { echo "missing optimizely anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1430/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 26363763 || { echo "size mismatch, aborting"; exit 1; }
+          echo "9006f167d81b624904c20c9955707f1a92fba41bcef00f7146a77d7d890b42dd  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'cdf-munir-araghchi-meeting-nov2026' haq-ki-awaz.html || { echo "missing cdf-munir anchor, aborting"; exit 1; }
+          grep -q 'mongolia-president-resigns-corruption-nov2026' haq-ki-awaz.html || { echo "missing mongolia anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1330"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1430"
           git push
