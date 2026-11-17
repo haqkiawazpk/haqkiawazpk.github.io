@@ -9,15 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1830/haq-ki-awaz.html -o haq-ki-awaz.html
-          test "$(stat -c%s haq-ki-awaz.html)" -eq 26780687 || { echo "size mismatch, aborting"; exit 1; }
-          echo "c7d597f7593a6208e0aca9a43b075c7a9525bc25eea3166ad127766498180e0d  haq-ki-awaz.html" | sha256sum -c -
-          grep -q 'punjab-assembly-opposition-sugar-smog-wheat-nov2026' haq-ki-awaz.html || { echo "missing punjab-assembly-opposition-sugar-smog-wheat anchor, aborting"; exit 1; }
-          grep -q 'britain-sanctions-israel-settlement-builders-nov2026' haq-ki-awaz.html || { echo "missing britain-sanctions-israel-settlement-builders anchor, aborting"; exit 1; }
+          curl -fL https://github.com/haqkiawazpk/haqkiawazpk.github.io/releases/download/site-update-2026-11-17-1930/haq-ki-awaz.html -o haq-ki-awaz.html
+          test "$(stat -c%s haq-ki-awaz.html)" -eq 26896488 || { echo "size mismatch, aborting"; exit 1; }
+          echo "f0d842a26c07a03085c953ce3c30673793183f3069f01ef2790f88ff3e9247ad  haq-ki-awaz.html" | sha256sum -c -
+          grep -q 'kp-gold-mining-jit-probe-nov2026' haq-ki-awaz.html || { echo "missing kp-gold-mining-jit-probe-nov2026 anchor, aborting"; exit 1; }
+          grep -q 'gaza-four-killed-deir-balah-khan-younis-nov2026' haq-ki-awaz.html || { echo "missing gaza-four-killed-deir-balah-khan-younis-nov2026 anchor, aborting"; exit 1; }
           cp haq-ki-awaz.html index.html
       - run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add haq-ki-awaz.html index.html
-          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1830"
+          git diff --cached --quiet || git commit -m "site-update-2026-11-17-1930"
           git push
