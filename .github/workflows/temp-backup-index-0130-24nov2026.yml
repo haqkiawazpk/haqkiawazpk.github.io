@@ -1,0 +1,18 @@
+name: Backup index 0130 24 Nov 2026
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy index.html to backup file
+        run: |
+          cp index.html "haq-ki-awaz-before-0130-24nov2026.html"
+          ls -lh index.html "haq-ki-awaz-before-0130-24nov2026.html"
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Backup index.html before 0130 24 Nov 2026 update
+          file_pattern: haq-ki-awaz-before-0130-24nov2026.html
