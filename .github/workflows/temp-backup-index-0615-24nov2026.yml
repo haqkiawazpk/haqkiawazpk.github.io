@@ -1,0 +1,17 @@
+name: temp-backup-index-0615-24nov2026
+on:
+  workflow_dispatch:
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cp index.html haq-ki-awaz-before-0615-24nov2026.html
+          ls -lh index.html haq-ki-awaz-before-0615-24nov2026.html
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Backup index.html to haq-ki-awaz-before-0615-24nov2026.html
+          file_pattern: haq-ki-awaz-before-0615-24nov2026.html
