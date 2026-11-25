@@ -1,0 +1,23 @@
+name: Temp backup index 1915 25nov2026
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Back up index.html
+        run: |
+          cp index.html haq-ki-awaz-before-1915-25nov2026.html
+          ls -lh index.html haq-ki-awaz-before-1915-25nov2026.html
+          sha256sum index.html haq-ki-awaz-before-1915-25nov2026.html
+          cmp index.html haq-ki-awaz-before-1915-25nov2026.html && echo BACKUP_BYTE_IDENTICAL
+      - name: Commit backup
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add haq-ki-awaz-before-1915-25nov2026.html
+          git commit -m "Backup index.html before 1915 update 25 Nov 2026" || echo "nothing to commit"
+          git push
