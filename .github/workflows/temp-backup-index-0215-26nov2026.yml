@@ -1,0 +1,19 @@
+name: Temp backup index 0215 26nov2026
+on:
+  workflow_dispatch:
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy index to backup file
+        run: cp index.html haq-ki-awaz-before-0215-26nov2026.html
+      - name: Commit backup
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add haq-ki-awaz-before-0215-26nov2026.html
+          git diff --cached --quiet || git commit -m "Backup index.html before 0215 update 26 Nov 2026"
+          git push
