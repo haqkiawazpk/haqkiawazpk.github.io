@@ -1,0 +1,16 @@
+name: Temp redeploy 2015 25nov2026
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make empty commit to trigger Pages redeployment
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git commit --allow-empty -m "Trigger Pages redeployment for 2015 update 25 Nov 2026"
+          git push
