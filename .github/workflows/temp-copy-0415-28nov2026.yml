@@ -1,0 +1,19 @@
+name: temp-copy-0415-28nov2026
+on:
+  workflow_dispatch:
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy staging file over index.html
+        run: cp haq-ki-awaz.html index.html
+      - name: Commit index.html
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html
+          git commit -m "update index.html from staging 0415 28nov2026" || echo "nothing to commit"
+          git push
