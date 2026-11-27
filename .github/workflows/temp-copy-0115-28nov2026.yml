@@ -1,0 +1,19 @@
+name: temp-copy-0115-28nov2026
+on:
+  workflow_dispatch:
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy uploaded file over index.html
+        run: cp haq-ki-awaz.html index.html
+      - name: Commit updated index.html
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update index.html from haq-ki-awaz.html 2026-11-28 0115 - 1234 cards" || echo "No changes to commit"
+          git push
