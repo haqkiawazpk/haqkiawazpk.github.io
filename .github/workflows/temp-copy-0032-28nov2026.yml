@@ -1,0 +1,30 @@
+name: Temp copy 0032 28Nov2026
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify uploaded file
+        run: |
+          ls -l haq-ki-awaz.html
+          test $(stat -c%s haq-ki-awaz.html) -eq 25409275
+          echo "fa74b27a482db99005c5de5fa92f3a37dec934caf3ee835147faba1428ae9620  haq-ki-awaz.html" | sha256sum -c -
+      - name: Copy to dated archive and index
+        run: |
+          cp haq-ki-awaz.html haq-ki-awaz-2026-11-28-0032.html
+          cp haq-ki-awaz.html index.html
+          ls -l haq-ki-awaz-2026-11-28-0032.html index.html
+          cmp haq-ki-awaz.html index.html
+          cmp haq-ki-awaz.html haq-ki-awaz-2026-11-28-0032.html
+      - name: Commit index and dated copy
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html haq-ki-awaz-2026-11-28-0032.html
+          git status --short
+          git commit -m "Update index.html from haq-ki-awaz.html 2026-11-28 0032 - 1232 cards" || echo "nothing to commit"
+          git push
