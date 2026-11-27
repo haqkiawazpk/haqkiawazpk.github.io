@@ -1,0 +1,21 @@
+name: Temp archive 2215 27nov2026
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Archive uploaded file with dated name
+        run: |
+          cp haq-ki-awaz.html haq-ki-awaz-2026-11-27-2215.html
+          ls -l haq-ki-awaz-2026-11-27-2215.html
+      - name: Commit archive
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add haq-ki-awaz-2026-11-27-2215.html
+          git diff --cached --quiet || git commit -m "Archive uploaded file as haq-ki-awaz-2026-11-27-2215.html"
+          git push
