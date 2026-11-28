@@ -1,0 +1,22 @@
+name: Temp copy haq-ki-awaz.html to index.html (0615 28 Nov 2026)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy staging file to index.html
+        run: cp haq-ki-awaz.html index.html
+      - name: Commit index.html
+        run: |
+          git config user.name "haqkiawazpk"
+          git config user.email "haqkiawazpk@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Publish 28 Nov 2026 6:15 AM update to index.html (1244 cards)"
+          git push
